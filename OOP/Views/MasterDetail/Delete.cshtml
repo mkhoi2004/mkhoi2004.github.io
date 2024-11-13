@@ -1,0 +1,106 @@
+﻿@model OOP.Models.Reservation
+
+@{
+    ViewBag.Title = "Delete Reservation";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Delete Reservation</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        h3 {
+            font-size: 5vh; /* Độ lớn của phần tử h3, sử dụng đơn vị vh */
+            margin-top: 5vh; /* Khoảng cách từ phần tử trên cùng, sử dụng đơn vị vh */
+            transition: font-size 0.3s ease; /* Hiệu ứng chuyển đổi kích thước font */
+            text-align: center;
+        }
+
+            h3:hover {
+                font-size: 8vh; /* Độ lớn của phần tử h3 khi di chuột qua, sử dụng đơn vị vh */
+            }
+
+        .form-container {
+            width: 40vh; /* Sử dụng % cho kích thước tối đa */
+            margin: 0 auto;
+            padding: 7vh; /* Kích thước padding, sử dụng đơn vị vh */
+            border: 0.3em solid #ccc;
+            border-radius: 7vh; /* Độ cong viền, sử dụng đơn vị vh */
+            background-color: #fff;
+        }
+
+        .form-group {
+            margin-bottom: 5vh; /* Khoảng cách giữa các nhóm form, sử dụng đơn vị vh */
+            text-align: center;
+        }
+
+        .btn {
+            font-size: 2.5vh;
+            display: inline-block;
+            padding: 1vh 2vh; /* Kích thước padding của nút, sử dụng đơn vị vh */
+            border: none;
+            border-radius: 5vh; /* Độ cong viền, sử dụng đơn vị vh */
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-secondary {
+            font-size: 2.5vh;
+            background-color: #007bff;
+        }
+
+        .btn:hover {
+            background-color: #5a6268;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        html, body {
+            margin: 0;
+            display: flex;
+            justify-content: center; /* Căn giữa theo chiều ngang */
+            align-items: center; /* Căn giữa theo chiều dọc */
+        }
+
+        .dl-horizontal {
+            text-align: center;
+            font-size: 3vh;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h3>Are you sure you want to delete this?</h3>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>@Html.DisplayNameFor(model => model.reservation_id) : @Html.DisplayFor(model => model.reservation_id)</dt>
+            <dt>@Html.DisplayNameFor(model => model.customer_name) : @Html.DisplayFor(model => model.customer_name)</dt>
+            <dt>@Html.DisplayNameFor(model => model.email) : @Html.DisplayFor(model => model.email)</dt>
+            <dt>@Html.DisplayNameFor(model => model.reservation_date) : @Html.DisplayFor(model => model.reservation_date)</dt>
+            <dt>@Html.DisplayNameFor(model => model.reservation_time) : @Html.DisplayFor(model => model.reservation_time)</dt>
+            <dt>@Html.DisplayNameFor(model => model.person) : @Html.DisplayFor(model => model.person)</dt>
+            <dt>@Html.DisplayNameFor(model => model.Menu.menu_id) : @Html.DisplayFor(model => model.Menu.menu_id)</dt>
+            <dt>@Html.DisplayNameFor(model => model.Menu.name) : @Html.DisplayFor(model => model.Menu.name)</dt>
+            <dt>@Html.DisplayNameFor(model => model.Menu.price) : @Html.DisplayFor(model => model.Menu.price)</dt>
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-group">
+                <input type="submit" value="Delete" class="btn btn-primary" />
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+            </div>
+        }
+    </div>
+</body>
+</html>

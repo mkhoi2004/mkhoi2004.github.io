@@ -1,0 +1,114 @@
+﻿@model OOP.Models.Service
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<head>
+    <title>Edit Service</title>
+
+    <style>
+        h4 {
+            font-size: 5vh; /* Độ lớn của phần tử h4, sử dụng đơn vị vh */
+            margin-top: 5vh; /* Khoảng cách từ phần tử trên cùng, sử dụng đơn vị vh */
+            transition: font-size 0.3s ease; /* Hiệu ứng chuyển đổi kích thước font */
+            text-align: center;
+        }
+
+            h4:hover {
+                font-size: 8vh; /* Độ lớn của phần tử h4 khi di chuột qua, sử dụng đơn vị vh */
+            }
+
+        .form-container {
+            width: 40vh; /* Sử dụng % cho kích thước tối đa */
+            margin: 0 auto;
+            padding: 7vh; /* Kích thước padding, sử dụng đơn vị vh */
+            border: 0.1em solid #ccc;
+            border-radius: 7vh; /* Độ cong viền, sử dụng đơn vị vh */
+            background-color: #fff;
+        }
+
+        .form-group {
+            margin-bottom: 5vh; /* Khoảng cách giữa các nhóm form, sử dụng đơn vị vh */
+        }
+
+        .control-label {
+            font-size: 3vh;
+            font-weight: bold;
+        }
+
+        .form-control {
+            font-size: 3vh;
+            width: 100%;
+            padding: 2vh; /* Kích thước padding, sử dụng đơn vị vh */
+            border: 0.1em solid #ccc;
+            border-radius: 5vh; /* Độ cong viền, sử dụng đơn vị vh */
+            box-sizing: border-box;
+        }
+
+        .btn {
+            font-size: 2vh;
+            display: inline-block;
+            padding: 1vh 2vh; /* Kích thước padding của nút, sử dụng đơn vị vh */
+            border: none;
+            border-radius: 5vh; /* Độ cong viền, sử dụng đơn vị vh */
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-secondary {
+            font-size: 2vh;
+            background-color: #007bff;
+        }
+
+        .btn:hover {
+            background-color: #5a6268;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        html, body {
+            margin: 0;
+            display: flex;
+            justify-content: center; /* Căn giữa theo chiều ngang */
+            align-items: center; /* Căn giữa theo chiều dọc */
+        }
+    </style>
+</head>
+<body>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-container">
+            <h4>Edit Service</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Name_service)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name_service, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Name_service, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Name_service, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" }) <!-- ActionLink được đặt trong form -->
+            </div>
+        </div>
+    }
+</body>

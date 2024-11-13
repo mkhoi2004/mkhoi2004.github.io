@@ -1,0 +1,136 @@
+﻿@model IEnumerable<OOP.Models.Menu>
+
+@{
+    ViewBag.Title = "Index";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Manage menu page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Reset các giá trị mặc định của các thẻ HTML */
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Thiết lập font và margin cho trang */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        /* Thiết lập style cho tiêu đề */
+        h2 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center; /* Căn giữa tiêu đề */
+            text-transform: uppercase; /* Chuyển đổi văn bản thành chữ in hoa */
+            font-size: 24px; /* Kích thước chữ tiêu đề */
+            border-bottom: 2px solid transparent; /* Đường viền dưới mặc định */
+            padding-bottom: 10px; /* Khoảng cách dưới của đường viền dưới */
+            transition: color 0.3s ease; /* Hiệu ứng chuyển đổi màu sắc của đường viền */
+        }
+
+            h2:hover {
+                color: #99ccff; /* Màu sắc của đường viền khi hover */
+            }
+
+
+        /* Thiết lập style cho nút */
+        .btn {
+            display: inline-block;
+            padding: 8px 12px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            margin-bottom: 20px;
+        }
+        
+
+
+        .btn:hover {
+                background-color: #0056b3;
+         }
+
+        /* Thiết lập style cho danh sách */
+        .product-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* Thiết lập style cho từng mục sản phẩm */
+        .product-item {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 10px;
+            overflow: hidden;
+            padding: 10px;
+            transition: box-shadow 0.3s;
+        }
+
+            .product-item:hover {
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            }
+
+        /* Thiết lập style cho tiêu đề của mỗi mục sản phẩm */
+        .product-title {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        /* Thiết lập style cho giá của mỗi mục sản phẩm */
+        .product-price {
+            font-weight: bold;
+        }
+
+        /* Thiết lập style cho nút xóa trong mỗi mục sản phẩm */
+        .delete-btn {
+            background-color: #dc3545;
+            border: none;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+            float: right;
+            cursor: pointer;
+        }
+
+            .delete-btn:hover {
+                background-color: #c82333;
+            }
+    </style>
+</head>
+<body>
+    <h2>Menu List</h2>
+
+    <p>
+        <a href="@Url.Action("Create")" class="btn">Create New</a>
+        <a href="@Url.Action("Index", "AddHome")" class="btn">Back To Home</a>
+
+    </p>
+    <ul class="product-list">
+        @foreach (var item in Model)
+        {
+        <li class="product-item">
+            <div class="product-title">@Html.DisplayNameFor(model => model.menu_id): @Html.DisplayFor(modelItem => item.menu_id)</div>
+            <div class="product-title">@Html.DisplayNameFor(model => model.name): @Html.DisplayFor(modelItem => item.name)</div>
+            <div class="product-price">@Html.DisplayNameFor(model => model.price): @Html.DisplayFor(modelItem => item.price)</div>
+            <button class="delete-btn" onclick="location.href='@Url.Action("Delete", new { id = item.menu_id })'">Delete</button>
+            <button class="delete-btn" onclick="location.href='@Url.Action("Edit", new { id = item.menu_id })'">Edit</button>
+
+        </li>
+        }
+    </ul>
+</body>
+</html>
+

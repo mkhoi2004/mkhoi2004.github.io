@@ -1,0 +1,154 @@
+﻿@model OOP.Models.Reservation
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Edit Reservation</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        h4 {
+            font-size: 5vh; /* Độ lớn của phần tử h4, sử dụng đơn vị vh */
+            margin-top: 5vh; /* Khoảng cách từ phần tử trên cùng, sử dụng đơn vị vh */
+            transition: font-size 0.3s ease; /* Hiệu ứng chuyển đổi kích thước font */
+            text-align: center;
+        }
+
+            h4:hover {
+                font-size: 8vh; /* Độ lớn của phần tử h4 khi di chuột qua, sử dụng đơn vị vh */
+            }
+
+        .form-container {
+            width: 40vh; /* Sử dụng % cho kích thước tối đa */
+            margin: 0 auto;
+            padding: 7vh; /* Kích thước padding, sử dụng đơn vị vh */
+            border: 0.1em solid #ccc;
+            border-radius: 7vh; /* Độ cong viền, sử dụng đơn vị vh */
+            background-color: #fff;
+        }
+
+        .form-group {
+            margin-bottom: 5vh; /* Khoảng cách giữa các nhóm form, sử dụng đơn vị vh */
+        }
+
+        .control-label {
+            font-size: 3vh;
+            font-weight: bold;
+        }
+
+        .form-control {
+            font-size: 3vh;
+            width: 100%;
+            padding: 2vh; /* Kích thước padding, sử dụng đơn vị vh */
+            border: 0.1em solid #ccc;
+            border-radius: 5vh; /* Độ cong viền, sử dụng đơn vị vh */
+            box-sizing: border-box;
+        }
+
+        .btn {
+            font-size: 2vh;
+            display: inline-block;
+            padding: 1vh 2vh; /* Kích thước padding của nút, sử dụng đơn vị vh */
+            border: none;
+            border-radius: 5vh; /* Độ cong viền, sử dụng đơn vị vh */
+            background-color: #007bff;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-secondary {
+            font-size: 2vh;
+            background-color: #007bff;
+        }
+
+        .btn:hover {
+            background-color: #5a6268;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        html, body {
+            margin: 0;
+            display: flex;
+            justify-content: center; /* Căn giữa theo chiều ngang */
+            align-items: center; /* Căn giữa theo chiều dọc */
+        }
+    </style>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-container">
+            <h4>Edit Reservation</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.reservation_id)
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.reservation_id, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.reservation_id, new { htmlAttributes = new { @class = "form-control bg-transparent border-primary p-4", placeholder = "Reservation ID" } })
+                @Html.ValidationMessageFor(model => model.reservation_id, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.customer_name, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.customer_name, new { htmlAttributes = new { @class = "form-control bg-transparent border-primary p-4", placeholder = "Customer Name" } })
+                @Html.ValidationMessageFor(model => model.customer_name, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control bg-transparent border-primary p-4", placeholder = "Email" } })
+                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.reservation_date, htmlAttributes: new { @class = "control-label" })
+                <div class="date" id="date" data-target-input="nearest">
+                    @Html.EditorFor(model => model.reservation_date, new { htmlAttributes = new { @class = "form-control bg-transparent border-primary p-4 datetimepicker-input", placeholder = "Date", data_target = "#date", data_toggle = "datetimepicker" } })
+                    @Html.ValidationMessageFor(model => model.reservation_date, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.reservation_time, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.reservation_time, new { htmlAttributes = new { @class = "form-control bg-transparent border-primary p-4", placeholder = "Time" } })
+                @Html.ValidationMessageFor(model => model.reservation_time, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.person, htmlAttributes: new { @class = "control-label" })
+                @Html.EditorFor(model => model.person, new { htmlAttributes = new { @class = "form-control bg-transparent border-primary p-4", placeholder = "Person", Value = "1", @readonly = "readonly" } })
+                @Html.ValidationMessageFor(model => model.person, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.menu_id, htmlAttributes: new { @class = "control-label" })
+                @Html.DropDownList("menu_id", ViewBag.MenuIdList as SelectList, "Select Menu ID", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.menu_id, "", new { @class = "text-danger" })
+            </div>
+
+         
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+
+            </div>
+        </div>
+    }
+
+   
+</body>
+</html>

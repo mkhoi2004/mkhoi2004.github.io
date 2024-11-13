@@ -1,0 +1,91 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<head>
+    <!-- bootstrap css -->
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.min.css">
+    <!-- style css -->
+    <link rel="stylesheet" type="text/css" href="~/css/style.css">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="~/css/responsive.css">
+    <!-- fevicon -->
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="~/css/jquery.mCustomScrollbar.min.css">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <!-- owl stylesheets -->
+    <link rel="stylesheet" href="~/css/owl.carousel.min.css">
+    <link rel="stylesoeet" href="~/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+    <!-- Libraries Stylesheet -->
+    <link href="~/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="~/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="~/css/style.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.3/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/popper.min.js"></script>
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/jquery-3.0.0.min.js"></script>
+    <script src="~/js/plugin.js"></script>
+    <script src="~/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="~/js/custom.js"></script>
+    <script src="~/js/owl.carousel.js"></script>
+    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+
+    <title>Manage the data</title>
+    <style>
+
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+            font-size: 5rem; /* Sử dụng rem thay vì em hoặc px */
+            margin-bottom: 1em; /* Khoảng cách dưới */
+        }
+
+        .collapse.navbar-collapse {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #fff;
+            padding: 10rem; /* Sử dụng rem thay vì em hoặc px */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 20em; /* Sử dụng rem thay vì em hoặc px */
+            margin: 10vh auto; /* Sử dụng vw thay vì em hoặc px */
+        }
+
+            .collapse.navbar-collapse .nav-link {
+                text-decoration: none;
+                color: #333;
+                padding: 0.75rem 0; /* Sử dụng rem thay vì em hoặc px */
+                font-size: 3rem; /* Sử dụng rem thay vì em hoặc px */
+                border-bottom: 0.0625rem solid #ccc; /* Sử dụng rem thay vì em hoặc px */
+            }
+
+                .collapse.navbar-collapse .nav-link:hover {
+                    background-color: #f0f0f0;
+                }
+    </style>
+</head>
+<body>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <h1> Manage The Data</h1>
+        <a class="nav-link" href="@Url.Action("Index", "Home")">Home</a>
+        <a class="nav-link" href="@Url.Action("Index", "AddConTact")">Contact</a>
+        <a class="nav-link" href="@Url.Action("Index", "AddMenu")">Menu</a>
+        <a class="nav-link" href="@Url.Action("Index", "AddService")">Service</a>
+        <a class="nav-link" href="@Url.Action("Index", "AddTestimonial")">Testimonial</a>
+
+
+    </div>
+</body>
